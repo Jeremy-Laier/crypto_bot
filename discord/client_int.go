@@ -1,5 +1,5 @@
 package discord
 
 type Discord interface {
-	AddCommand(command Command)error
+	AddCommand(command Command) error
 }
