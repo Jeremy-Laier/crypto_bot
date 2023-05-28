@@ -33,7 +33,7 @@ func (s serverImpl) HandlePing(c echo.Context) error {
 
 	if data.Type == Ping {
 		log.Info().Msg("ping found, returning 200")
-		return c.JSON(200, &PingResponse{Type: 1})
+		return c.JSON(200, &PingResponse{Type: Pong})
 	}
 
 	log.Info().Msgf("%+v", (data.Data.Options[0].Value).(string))
@@ -82,8 +82,9 @@ func (s serverImpl) HandlePing(c echo.Context) error {
 }
 
 type PingResponse struct {
-	Type int `json:"type"`
+	Type InteractionResponseType `json:"type"`
 }
+
 type InteractionType int
 
 const (
